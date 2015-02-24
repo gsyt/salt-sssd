@@ -5,7 +5,7 @@
 } %}
 
 {% set service = {
-  'manage': salt['pillar.get']('sssd:service:manage', False),
+  'manage': salt['pillar.get']('sssd:service:manage', True),
   'running': salt['pillar.get']('sssd:service:running', True),
   'enable': salt['pillar.get']('sssd:service:enable', True),
 } %}
