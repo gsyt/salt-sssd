@@ -1,2 +1,2 @@
 # salt-load
-salt formula to prepare a server to be used for load testing with JMeter
+salt formula to have a server use sssd as authentication method
