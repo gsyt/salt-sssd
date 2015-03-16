@@ -11,7 +11,7 @@
 } %}
 
 {% set config = {
-  'manage': salt['pillar.get']('sssd:config:manage', True),
+  'manage': salt['pillar.get']('sssd:config:manage', False),
   'source': salt['pillar.get']('sssd:config:source', 'salt://sssd/conf/sssd.conf'),
 } %}
 
