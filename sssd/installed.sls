@@ -14,6 +14,9 @@
   'manage': salt['pillar.get']('sssd:config:manage', False),
   'source': salt['pillar.get']('sssd:config:source', 'salt://sssd/conf/sssd.conf'),
   'nsswitch': salt['pillar.get']('sssd:config:nsswitch', 'salt://sssd/conf/nsswitch.conf'),
+  'pam-passwd': salt['pillar.get']('sssd:config:pam-passwd', 'salt://sssd/conf/password-auth-ac'),
+  'pam-fprint': salt['pillar.get']('sssd:config:pam-fprint', 'salt://sssd/conf/fingerprint-auth-ac'),
+  'pam-smcard': salt['pillar.get']('sssd:config:pam-smcard', 'salt://sssd/conf/smartcard-auth-ac'),
 } %}
 
 sssd.installed:
@@ -50,4 +53,36 @@ nsswitch.config:
     - mode: 644
     - require:
       - pkg: sssd.installed
+
+pam-password.config
+  file.managed:
+    - name: {{ sssd.pam-passwd}}
+    - source: {{ config.pam-passwd}}
+    - template: jinja
+    - user: root
+    - group: root
+    - mode: 644
+    - require:
+      - pkg: sssd.installed
+
+pam-fingerprint.config
+    - name: {{ sssd.pam-fprint}}
+    - source: {{ config.pam-fprint}}
+    - template: jinja
+    - user: root
+    - group: root
+    - mode: 644
+    - require:
+      - pkg: sssd.installed
+
+pam-smartcard.config
+    - name: {{ sssd.nsswitch}}
+    - source: {{ config.pam-fprint}}
+    - template: jinja
+    - user: root
+    - group: root
+    - mode: 644
+    - require:
+      - pkg: sssd.installed
+
   {% endif %}
