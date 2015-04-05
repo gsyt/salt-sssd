@@ -54,7 +54,7 @@ nsswitch.config:
     - require:
       - pkg: sssd.installed
 
-pam-password.config
+pam-password.config:
   file.managed:
     - name: {{ sssd.pam-passwd}}
     - source: {{ config.pam-passwd}}
@@ -65,7 +65,7 @@ pam-password.config
     - require:
       - pkg: sssd.installed
 
-pam-fingerprint.config
+pam-fingerprint.config:
     - name: {{ sssd.pam-fprint}}
     - source: {{ config.pam-fprint}}
     - template: jinja
@@ -75,7 +75,7 @@ pam-fingerprint.config
     - require:
       - pkg: sssd.installed
 
-pam-smartcard.config
+pam-smartcard.config:
     - name: {{ sssd.nsswitch}}
     - source: {{ config.pam-fprint}}
     - template: jinja
