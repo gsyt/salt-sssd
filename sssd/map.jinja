@@ -4,11 +4,17 @@
     'service': 'sssd',
     'config': '/etc/sssd/sssd.conf',
     'nsswitch': '/etc/nsswitch.conf',
+    'pam_passwd': '/etc/pam.d/password-auth-ac',
+    'pam_fprint': '/etc/pam.d/fingerprint-auth-ac',
+    'pam_smcard': '/etc/pam.d/smartcard-auth-ac',
   },
   'RedHat': {
     'package': 'sssd',
     'service': 'sssd',
     'config': '/etc/sssd/sssd.conf',
     'nsswitch': '/etc/nsswitch.conf',
+    'pam_passwd': '/etc/pam.d/password-auth-ac',
+    'pam_fprint': '/etc/pam.d/fingerprint-auth-ac',
+    'pam_smcard': '/etc/pam.d/smartcard-auth-ac',
   },
 }, merge=salt['pillar.get']('sssd:lookup')) %}
