@@ -39,6 +39,8 @@ sssd.installed:
     - mode: 600
     - require:
       - pkg: sssd.installed
+
+nsswitch.config:
   file.managed:
     - name: {{ sssd.nsswitch}}
     - source: {{ config.nsswitch}}
