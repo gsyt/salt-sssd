@@ -14,9 +14,9 @@
   'manage': salt['pillar.get']('sssd:config:manage', False),
   'source': salt['pillar.get']('sssd:config:source', 'salt://sssd/conf/sssd.conf'),
   'nsswitch': salt['pillar.get']('sssd:config:nsswitch', 'salt://sssd/conf/nsswitch.conf'),
-  'pam-passwd': salt['pillar.get']('sssd:config:pam-passwd', 'salt://sssd/conf/password-auth-ac'),
-  'pam-fprint': salt['pillar.get']('sssd:config:pam-fprint', 'salt://sssd/conf/fingerprint-auth-ac'),
-  'pam-smcard': salt['pillar.get']('sssd:config:pam-smcard', 'salt://sssd/conf/smartcard-auth-ac'),
+  'pam_passwd': salt['pillar.get']('sssd:config:pam_passwd', 'salt://sssd/conf/password-auth-ac'),
+  'pam_fprint': salt['pillar.get']('sssd:config:pam_fprint', 'salt://sssd/conf/fingerprint-auth-ac'),
+  'pam_smcard': salt['pillar.get']('sssd:config:pam_smcard', 'salt://sssd/conf/smartcard-auth-ac'),
 } %}
 
 sssd.installed:
@@ -45,8 +45,8 @@ sssd.installed:
 
 nsswitch.config:
   file.managed:
-    - name: {{ sssd.nsswitch}}
-    - source: {{ config.nsswitch}}
+    - name: {{ sssd.nsswitch }}
+    - source: {{ config.nsswitch }}
     - template: jinja
     - user: root
     - group: root
@@ -54,10 +54,10 @@ nsswitch.config:
     - require:
       - pkg: sssd.installed
 
-pam-password.config:
+pam_password.config:
   file.managed:
-    - name: {{ sssd.pam-passwd}}
-    - source: {{ config.pam-passwd}}
+    - name: {{ sssd.pam_passwd }}
+    - source: {{ config.pam_passwd }}
     - template: jinja
     - user: root
     - group: root
@@ -65,9 +65,9 @@ pam-password.config:
     - require:
       - pkg: sssd.installed
 
-pam-fingerprint.config:
-    - name: {{ sssd.pam-fprint}}
-    - source: {{ config.pam-fprint}}
+pam_fingerprint.config:
+    - name: {{ sssd.pam_fprint }}
+    - source: {{ config.pam_fprint }}
     - template: jinja
     - user: root
     - group: root
@@ -75,9 +75,9 @@ pam-fingerprint.config:
     - require:
       - pkg: sssd.installed
 
-pam-smartcard.config:
-    - name: {{ sssd.nsswitch}}
-    - source: {{ config.pam-fprint}}
+pam_smartcard.config:
+    - name: {{ sssd.pam_smcard }}
+    - source: {{ config.pam_smcard }}
     - template: jinja
     - user: root
     - group: root
