@@ -66,6 +66,7 @@ pam_passwd.config:
       - pkg: sssd.installed
 
 pam_fprint.config:
+  file.managed:
     - name: {{ sssd.pam_fprint }}
     - source: {{ config.pam_fprint }}
     - template: jinja
@@ -76,6 +77,7 @@ pam_fprint.config:
       - pkg: sssd.installed
 
 pam_smcard.config:
+  file.managed:
     - name: {{ sssd.pam_smcard }}
     - source: {{ config.pam_smcard }}
     - template: jinja
