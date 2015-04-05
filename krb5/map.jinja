@@ -1,0 +1,10 @@
+{% set krb5 = salt['grains.filter_by']( {
+  'Debian': {
+    'package': 'krb5-user',
+    'config': '/etc/krb5.conf',
+  },
+  'RedHat': {
+    'package': 'krb5-workstation',
+    'config': '/etc/krb5.conf',
+  },
+}, merge=salt['pillar.get']('krb5:lookup')) %}
