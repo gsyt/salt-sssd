@@ -3,10 +3,12 @@
     'package': 'sssd',
     'service': 'sssd',
     'config': '/etc/sssd/sssd.conf',
+    'nsswitch': '/etc/nsswitch.conf',
   },
   'RedHat': {
     'package': 'sssd',
     'service': 'sssd',
     'config': '/etc/sssd/sssd.conf',
+    'nsswitch': '/etc/nsswitch.conf',
   },
 }, merge=salt['pillar.get']('sssd:lookup')) %}

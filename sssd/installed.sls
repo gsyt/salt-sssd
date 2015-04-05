@@ -13,6 +13,7 @@
 {% set config = {
   'manage': salt['pillar.get']('sssd:config:manage', False),
   'source': salt['pillar.get']('sssd:config:source', 'salt://sssd/conf/sssd.conf'),
+  'nsswitch': salt['pillar.get']('sssd:config:nsswitch', 'salt://sssd/conf/nsswitch.conf'),
 } %}
 
 sssd.installed:
@@ -36,6 +37,15 @@ sssd.installed:
     - user: root
     - group: root
     - mode: 600
+    - require:
+      - pkg: sssd.installed
+  file.managed:
+    - name: {{ sssd.nsswitch}}
+    - source: {{ config.nsswitch}}
+    - template: jinja
+    - user: root
+    - group: root
+    - mode: 644
     - require:
       - pkg: sssd.installed
   {% endif %}

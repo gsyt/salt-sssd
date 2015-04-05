@@ -19,7 +19,7 @@ krb5.installed:
     - template: jinja
     - user: root
     - group: root
-    - mode: 600
+    - mode: 644
     - require:
       - pkg: krb5.installed
   {% endif %}
